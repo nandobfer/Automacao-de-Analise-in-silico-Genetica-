@@ -36,13 +36,17 @@ def getORF(file):
         
         saida.addValues(getScore(file), line[0], line[1], line[2], line[3], line[4], line[5], j, file_name)
     saida.endFile()
+    return True
 
 path = 'data/'
 dir_list = os.listdir(path)
 for file in dir_list:
     file_name = Path('data/'+file).stem
-    print(file_name)
-    getORF('data/'+file)
+    try:
+        getORF('data/'+file)
+        print(file_name)
+    except:
+        print('ERRO: ' + file_name)
     
 
 saida.writeValues('saida.xlsx')
