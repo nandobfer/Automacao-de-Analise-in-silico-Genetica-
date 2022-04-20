@@ -91,12 +91,13 @@ path = 'data/'
 dir_list = os.listdir(path)
 for file in dir_list:
     file_name = Path('data/'+file).stem
-    getORF('data/'+file)
-    # try:
-    #     print(file_name)
-    # except Exception as e:
-    #     print('ERRO em ' + file_name)
-    #     print(e)
+
+    try:
+        getORF('data/'+file)
+        print(file_name)
+    except Exception as e:
+        print('ERRO em ' + file_name)
+        print(e)
     
 
 saida.writeValues('saida.xlsx')
