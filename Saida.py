@@ -31,7 +31,8 @@ class Saida():
             f'Fim {line+1}': fim,
             f'Score Especifico {line+1}': score_e,
             f'ORF inicio {line+1}': orf_i,
-            f'ORF fim {line+1}': orf_f
+            f'ORF fim {line+1}': orf_f,
+            f'pb {line+1}': pb
         }
         self.data.append(data)
     
