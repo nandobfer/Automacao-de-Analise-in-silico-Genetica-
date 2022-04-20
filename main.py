@@ -25,7 +25,7 @@ def getScore(file):
     return str(score)
 
 def getORF(file):
-    pdf = read_pdf(file)
+    pdf = read_pdf(file, pages=1)
     table = pdf[0].values
     for j in range(len(table)):
         line = []
@@ -41,6 +41,7 @@ path = 'data/'
 dir_list = os.listdir(path)
 for file in dir_list:
     file_name = Path('data/'+file).stem
+    print(file_name)
     getORF('data/'+file)
     
 
