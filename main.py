@@ -1,8 +1,13 @@
 from tokenize import Number
 from tabula import read_pdf
-import PyPDF2, os
+import PyPDF2, os, sys
 from Saida import *
 from pathlib import Path
+
+RED="\033[1;31m"
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+COLOR_OFF='\033[0m'
 
 valid = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.']
 saida = Saida()
@@ -25,20 +30,6 @@ def getScore(file):
                 j += 1
                 
     return str(score)
-
-# def getORF(file):
-#     pdf = read_pdf(file, pages=1)
-#     table = pdf[0].values
-#     for j in range(len(table)):
-#         line = []
-#         for i in range(2, 8):
-#             value = str(table[j][i]).replace('-', '')
-#             value = value.replace(' ', '')
-#             line.append(value) 
-        
-#         saida.addValues(getScore(file), line[0], line[1], line[2], line[3], line[4], line[5], j, file_name)
-#     saida.endFile()
-#     return True
 
 def getORF(file):
     with open(file, "rb") as pdf_file:
@@ -91,13 +82,15 @@ path = 'data/'
 dir_list = os.listdir(path)
 for file in dir_list:
     file_name = Path('data/'+file).stem
+    os.system('color')
 
     try:
         getORF('data/'+file)
-        print(file_name)
+        print(GREEN + 'SUCESS: ' + COLOR_OFF + file_name)
     except Exception as e:
-        print('ERRO em ' + file_name)
+        print(RED + 'ERROR: ' + YELLOW + file_name + RED)
         print(e)
+        print(COLOR_OFF, end='')
     
 
 saida.writeValues('saida.xlsx')
