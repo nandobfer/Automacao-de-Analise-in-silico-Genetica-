@@ -1,6 +1,4 @@
-from tokenize import Number
-from tabula import read_pdf
-import PyPDF2, os, sys
+import PyPDF2, os
 from Saida import *
 from pathlib import Path
 

@@ -1,4 +1,3 @@
-from genericpath import exists
 import pandas as pd
 
 class Saida():
