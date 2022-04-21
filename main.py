@@ -39,7 +39,8 @@ def getORF(file):
         page = read_pdf.pages[0]
         page_content = page.extractText()
     # print(page_content)
-    # extracting lines
+    duplicate = False
+    # extracting
     line = []
     counter = 1
     for i in range(len(page_content)):
@@ -52,19 +53,8 @@ def getORF(file):
                 j += 1
             else:
                 counter += 1
-                
-    counter2 = 1
-    for i in range(len(page_content)):
-        if page_content[i] == '2' and page_content[i+2] == '+' and page_content[i+7] == f'{counter2}':
-            line.append('')
-            j = i + 8
-            while not page_content[j] == '\n':
-                # print(page_content[j])
-                line[counter-1] += page_content[j]
-                j += 1
-            else:
-                counter2 += 1
-                counter += 1
+        if page_content[i] == '2' and page_content[i+2] == '+' and page_content[i+7] == f'{counter}':
+            duplicate = True
     
     # parsing lines
     number = ''
@@ -90,6 +80,46 @@ def getORF(file):
         new_line = []
         
     saida.endFile()
+    
+     # extracting duplicate lines
+    if duplicate:
+        line = []
+        counter = 1
+        for i in range(len(page_content)):
+            if page_content[i] == '1' and page_content[i+2] == '+' and page_content[i+7] == f'{counter}':
+                line.append('')
+                j = i + 8
+                while not page_content[j] == '\n':
+                    # print(page_content[j])
+                    line[counter-1] += page_content[j]
+                    j += 1
+                else:
+                    counter += 1
+        
+        # parsing lines
+        number = ''
+        data = []
+        new_line = []
+        for string in line:
+            valid_flag = False
+            for char in string:
+                if char in valid:
+                    number += char
+                    valid_flag = True
+                else:
+                    if valid_flag:
+                        new_line.append(number)
+                        number = ''
+                    valid_flag = False
+                    
+            new_line.append(number)
+            number = ''
+            data.append(new_line)
+            # send new line to OUT
+            saida.addValues(getScore(file), new_line[0], new_line[1], new_line[2], new_line[3], new_line[4], new_line[5], data.index(new_line), file_name)
+            new_line = []
+            
+        saida.endFile()
     # print(data)
 
 path = 'data/'
