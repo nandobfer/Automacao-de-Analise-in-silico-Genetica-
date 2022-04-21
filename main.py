@@ -20,12 +20,15 @@ def getScore(file):
     # print(page_content)
     score = ''
     for i in range(len(page_content)):
-        if page_content[i] == 'S' and page_content[i+5] == ':':
-            j = i + 6
-            while not page_content[j] == '\n':
-                # print(page_content[j])
-                score += page_content[j]
-                j += 1
+        try:
+            if page_content[i] == 'S' and page_content[i+5] == ':':
+                j = i + 6
+                while not page_content[j] == '\n':
+                    # print(page_content[j])
+                    score += page_content[j]
+                    j += 1
+        except:
+            return str('erro')
                 
     return str(score)
 
