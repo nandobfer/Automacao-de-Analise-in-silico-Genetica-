@@ -33,7 +33,7 @@ def getScore(file):
                 
     return str(score)
 
-def extractNumbers(page_content):
+def extractNumbers(page_content, file):
     for resposta in range(1, RESPOSTAS):
         # extracting
         line = []
@@ -81,7 +81,7 @@ def getORF(file):
         page = read_pdf.pages[0]
         page_content = page.extractText()
     # print(page_content)
-    extractNumbers(page_content)
+    extractNumbers(page_content, file)
     # print(data)
 
 path = 'data/'
