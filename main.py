@@ -64,6 +64,7 @@ def getORF(file):
                 j += 1
             else:
                 counter2 += 1
+                counter += 1
     
     # parsing lines
     number = ''
