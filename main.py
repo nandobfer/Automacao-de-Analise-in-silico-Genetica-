@@ -89,9 +89,10 @@ dir_list = os.listdir(path)
 for file in dir_list:
     file_name = Path('data/'+file).stem
     os.system('color')
+    getORF('data/'+file)
 
     try:
-        getORF('data/'+file)
+        # getORF('data/'+file)
         print(GREEN + 'SUCESS: ' + COLOR_OFF + file_name)
     except Exception as e:
         print(RED + 'ERROR: ' + YELLOW + file_name + RED)
