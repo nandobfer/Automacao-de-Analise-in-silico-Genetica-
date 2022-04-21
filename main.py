@@ -86,7 +86,7 @@ def getORF(file):
         line = []
         counter = 1
         for i in range(len(page_content)):
-            if page_content[i] == '1' and page_content[i+2] == '+' and page_content[i+7] == f'{counter}':
+            if page_content[i] == '2' and page_content[i+2] == '+' and page_content[i+7] == f'{counter}':
                 line.append('')
                 j = i + 8
                 while not page_content[j] == '\n':
