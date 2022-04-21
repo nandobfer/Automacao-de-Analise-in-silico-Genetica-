@@ -2,3 +2,4 @@ __pycache__
 data
 saida.xlsx
 errors.txt
+config.py

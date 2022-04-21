@@ -71,8 +71,10 @@ def extractNumbers(page_content, file):
             # send new line to OUT
             saida.addValues(getScore(file), new_line[0], new_line[1], new_line[2], new_line[3], new_line[4], new_line[5], data.index(new_line), file_name)
             new_line = []
-            
-        saida.endFile()
+        try:    
+            saida.endFile()
+        except:
+            return True
 
 def getORF(file):
     with open(file, "rb") as pdf_file:
