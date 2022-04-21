@@ -50,9 +50,9 @@ def getORF(file):
             else:
                 counter += 1
                 
-    counter = 1
+    counter2 = 1
     for i in range(len(page_content)):
-        if page_content[i] == '2' and page_content[i+2] == '+' and page_content[i+7] == f'{counter}':
+        if page_content[i] == '2' and page_content[i+2] == '+' and page_content[i+7] == f'{counter2}':
             line.append('')
             j = i + 8
             while not page_content[j] == '\n':
@@ -60,7 +60,7 @@ def getORF(file):
                 line[counter-1] += page_content[j]
                 j += 1
             else:
-                counter += 1
+                counter2 += 1
     
     # parsing lines
     number = ''
