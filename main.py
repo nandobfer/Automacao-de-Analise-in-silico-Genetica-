@@ -89,6 +89,8 @@ for file in dir_list:
         print(RED + 'ERROR: ' + YELLOW + file_name + RED)
         print(e)
         print(COLOR_OFF, end='')
+        with open("errors.txt", "a") as file_error:
+            file_error.write(file_name + '\n')
     
 
 saida.writeValues('saida.xlsx')
