@@ -39,7 +39,6 @@ def getORF(file):
     # extracting lines
     line = []
     counter = 1
-    counter2 = 1
     for i in range(len(page_content)):
         if page_content[i] == '1' and page_content[i+2] == '+' and page_content[i+7] == f'{counter}':
             line.append('')
@@ -51,15 +50,17 @@ def getORF(file):
             else:
                 counter += 1
                 
-        if page_content[i] == '2' and page_content[i+2] == '+' and page_content[i+7] == f'{counter2}':
+    counter = 1
+    for i in range(len(page_content)):
+        if page_content[i] == '2' and page_content[i+2] == '+' and page_content[i+7] == f'{counter}':
             line.append('')
             j = i + 8
             while not page_content[j] == '\n':
                 # print(page_content[j])
-                line[counter2-1] += page_content[j]
+                line[counter-1] += page_content[j]
                 j += 1
             else:
-                counter2 += 1
+                counter += 1
     
     # parsing lines
     number = ''
