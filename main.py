@@ -34,7 +34,7 @@ def getScore(file):
     return str(score)
 
 def extractNumbers(page_content, file):
-    for resposta in range(1, RESPOSTAS):
+    for resposta in range(1, RESPOSTAS+1):
         # extracting
         line = []
         counter = 1
