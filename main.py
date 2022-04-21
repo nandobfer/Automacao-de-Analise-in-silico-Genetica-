@@ -34,12 +34,12 @@ def getScore(file):
     return str(score)
 
 def extractNumbers(page_content, file):
-    for resposta in range(1, RESPOSTAS+1):
+    for resposta in range(RESPOSTAS):
         # extracting
         line = []
         counter = 1
         for i in range(len(page_content)):
-            if page_content[i] == str(resposta) and page_content[i+2] == '+' and page_content[i+7] == f'{counter}':
+            if page_content[i] == str(resposta+1) and page_content[i+2] == '+' and page_content[i+7] == f'{counter}':
                 line.append('')
                 j = i + 8
                 while not page_content[j] == '\n':
